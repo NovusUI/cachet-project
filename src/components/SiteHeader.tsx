@@ -20,8 +20,8 @@ type NavItem = {
 const navItems: NavItem[] = [
   { label: "HOME" },
   { label: "ABOUT", sectionId: "about" },
-  { label: "LISTING", sectionId: "listing" },
   { label: "SERVICES", sectionId: "services" },
+  { label: "LISTING", sectionId: "listing" },
   { label: "VIRTUAL TOUR" },
 ];
 
@@ -159,6 +159,8 @@ export default function SiteHeader({
           <img
             src={cachetLogo}
             alt="Cachet logo"
+            fetchPriority="high"
+            decoding="async"
             className="h-11 w-auto shrink-0 object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.28)]"
           />
           <div className="flex flex-col leading-tight">
@@ -230,6 +232,8 @@ export default function SiteHeader({
               src={reehLogo}
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
               className="pointer-events-none absolute h-96 w-auto opacity-[0.08] object-contain"
             />
 

@@ -120,6 +120,8 @@ export default function FooterSection() {
             <img
               src={reehLogo}
               alt="Cachet monogram"
+              loading="lazy"
+              decoding="async"
               className="h-28 w-auto shrink-0 object-contain"
             />
             <h2 className="text-[2.3rem] font-bold tracking-[0.08em] text-white sm:text-[2.65rem]">

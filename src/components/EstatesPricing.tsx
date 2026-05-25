@@ -267,6 +267,8 @@ export default function EstatesPricing() {
                 key={`${slide.id}-left-img`}
                 src={slide.leftImg}
                 alt={slide.name}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
                 variants={imageVariants}
                 initial="initial"
@@ -318,6 +320,8 @@ export default function EstatesPricing() {
               key={`${slide.id}-right-img`}
               src={slide.rightImg}
               alt={`${slide.name} payment`}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
               variants={imageVariants}
               initial="initial"

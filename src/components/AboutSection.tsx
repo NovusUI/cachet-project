@@ -73,6 +73,8 @@ export default function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&auto=format&fit=crop&q=80"
                 alt="Elegant Cachet interior"
+                loading="lazy"
+                decoding="async"
                 className="h-[220px] w-full object-cover sm:h-[280px] lg:h-[300px]"
               />
             </motion.div>
@@ -84,6 +86,8 @@ export default function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&auto=format&fit=crop&q=80"
                 alt="Premium Cachet property exterior"
+                loading="lazy"
+                decoding="async"
                 className="h-[220px] w-full object-cover sm:h-[290px] lg:h-[320px]"
               />
             </motion.div>

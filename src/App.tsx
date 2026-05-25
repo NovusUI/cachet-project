@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HomePage from "./components/HomePage";
+import SeoHead from "./components/SeoHead";
 import SiteHeader from "./components/SiteHeader";
 import VirtualTourPage from "./components/VirtualTourPage";
 
@@ -85,6 +86,7 @@ export default function App() {
 
   return (
     <>
+      <SeoHead currentPath={currentPath} />
       <SiteHeader
         currentPath={currentPath}
         onNavigateHome={handleNavigateHome}

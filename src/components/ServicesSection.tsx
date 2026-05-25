@@ -102,6 +102,8 @@ function ServiceCard({
         src={service.image}
         alt={service.title}
         draggable={false}
+        loading="lazy"
+        decoding="async"
         className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-80"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />

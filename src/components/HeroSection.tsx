@@ -53,7 +53,7 @@ export default function HeroSection() {
   const contentStart = hasLineAnimation ? 2.0 : 0;
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gray-900 font-sans">
+    <section className="overflow-hidden bg-gray-900 font-sans">
       <div className="relative w-full" style={{ minHeight: "100svh" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -225,6 +225,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
