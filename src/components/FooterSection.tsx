@@ -20,7 +20,7 @@ const company = [
 
 const contact = [
   { label: "07045413648", href: "tel:07045413648" },
-  { label: "08053647733", href: "tel:08053647733" },
+  { label: "09039968345", href: "tel:09039968345" },
   { label: "Cachetrealtors26@gmail.com", href: "mailto:Cachetrealtors26@gmail.com" },
   { label: "cachetrealtorsng.com" },
 ];
