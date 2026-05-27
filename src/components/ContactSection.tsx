@@ -16,7 +16,7 @@ const contactItems: ContactItem[] = [
   },
   {
     label: "PHONE",
-    value: "07045413648 · 08053647733",
+    value: "07045413648 · 09039968345",
     icon: "phone",
   },
   {
