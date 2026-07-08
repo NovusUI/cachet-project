@@ -20,8 +20,11 @@ const company = [
 
 const contact = [
   { label: "07045413648", href: "tel:07045413648" },
-  { label: "09039968345", href: "tel:09039968345" },
-  { label: "Cachetrealtors26@gmail.com", href: "mailto:Cachetrealtors26@gmail.com" },
+  { label: "09036968345", href: "tel:09036968345" },
+  {
+    label: "Cachetrealtors26@gmail.com",
+    href: "mailto:Cachetrealtors26@gmail.com",
+  },
   { label: "cachetrealtorsng.com" },
 ];
 
@@ -115,7 +118,10 @@ export default function FooterSection() {
         viewport={{ once: true, amount: 0.18 }}
         className="relative mx-auto grid max-w-7xl gap-12 md:grid-cols-3 md:gap-x-10 md:gap-y-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.6fr)_minmax(0,0.6fr)_minmax(0,0.72fr)] lg:gap-14"
       >
-        <motion.div variants={itemVariants} className="max-w-md md:col-span-3 lg:col-span-1">
+        <motion.div
+          variants={itemVariants}
+          className="max-w-md md:col-span-3 lg:col-span-1"
+        >
           <div className="flex items-center gap-4">
             <img
               src={reehLogo}
@@ -186,8 +192,8 @@ export default function FooterSection() {
 
       <div className="relative mx-auto mt-16 max-w-7xl border-t border-white/6 bg-[#363636] px-0 py-10 sm:mt-20 lg:mt-24">
         <p className="text-[0.74rem] tracking-[0.02em] text-white/28 sm:text-[0.82rem]">
-          © 2026 CACHET REALTORS LIMITED · NO 42, OBAFEMI AWOLOWO WAY,
-          OKE-BOLA, IBADAN · EXCELLENCE IN EVERY DEAL
+          © 2026 CACHET REALTORS LIMITED · NO 42, OBAFEMI AWOLOWO WAY, OKE-BOLA,
+          IBADAN · EXCELLENCE IN EVERY DEAL
         </p>
       </div>
     </footer>
