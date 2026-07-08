@@ -7,6 +7,7 @@ const ServicesSection = lazy(() => import("./ServicesSection"));
 const MissionVisionSection = lazy(() => import("./MissionVisionSection"));
 const WhyChooseUsSection = lazy(() => import("./WhyChooseUsSection"));
 const EstatesPricing = lazy(() => import("./EstatesPricing"));
+const TeamSection = lazy(() => import("./TeamSection"));
 const ContactSection = lazy(() => import("./ContactSection"));
 const CoreValuesSection = lazy(() => import("./CoreValuesSection"));
 const FooterSection = lazy(() => import("./FooterSection"));
@@ -36,6 +37,11 @@ export default function HomePage() {
       <div id="listing" className="scroll-mt-28">
         <LazySection placeholderClassName="min-h-[44rem] bg-white">
           <EstatesPricing />
+        </LazySection>
+      </div>
+      <div id="team" className="scroll-mt-28">
+        <LazySection placeholderClassName="min-h-[34rem] bg-white">
+          <TeamSection />
         </LazySection>
       </div>
       <div id="contact" className="scroll-mt-28">

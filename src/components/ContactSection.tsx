@@ -1,5 +1,5 @@
-import { useState, type FormEvent, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { submitContactForm } from "../lib/contactForm";
 
 type ContactItem = {
@@ -135,6 +135,89 @@ function FormField({
   );
 }
 
+function FormStatusToast({
+  state,
+  message,
+  onDismiss,
+}: {
+  state: "success" | "error";
+  message: string;
+  onDismiss: () => void;
+}) {
+  const isSuccess = state === "success";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 14, scale: 0.985 }}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      role={isSuccess ? "status" : "alert"}
+      aria-live="polite"
+      className={`fixed right-4 bottom-4 z-[110] flex w-[calc(100vw-2rem)] max-w-md items-start gap-3 rounded-[1.15rem] border px-4 py-4 text-sm shadow-[0_20px_40px_rgba(20,13,24,0.18)] backdrop-blur-sm sm:right-6 sm:bottom-6 ${
+        isSuccess
+          ? "border-[#d7c5e7] bg-[#f7f1fb]/96 text-[#5C2E83]"
+          : "border-[#efc3b6] bg-[#fff4f0]/96 text-[#b44f2d]"
+      }`}
+    >
+      <span
+        className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
+          isSuccess ? "bg-[#5C2E83] text-white" : "bg-[#b44f2d] text-white"
+        }`}
+      >
+        {isSuccess ? (
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path
+              d="M2.3 6.1L4.7 8.5L9.7 3.5"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        ) : (
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path
+              d="M6 3V6.25"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+            />
+            <circle cx="6" cy="8.75" r="0.75" fill="currentColor" />
+          </svg>
+        )}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="text-[0.72rem] font-semibold tracking-[0.18em] opacity-70">
+          {isSuccess ? "MESSAGE SENT" : "SUBMISSION FAILED"}
+        </p>
+        <p className="mt-1 leading-6">{message}</p>
+      </div>
+      <button
+        type="button"
+        onClick={onDismiss}
+        aria-label="Dismiss notification"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-current/70 transition-colors duration-200 hover:bg-black/5 hover:text-current"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M7 7L17 17"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
+          <path
+            d="M17 7L7 17"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
+        </svg>
+      </button>
+    </motion.div>
+  );
+}
+
 export default function ContactSection() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -146,6 +229,24 @@ export default function ContactSection() {
     "idle"
   );
   const [submitMessage, setSubmitMessage] = useState("");
+
+  useEffect(() => {
+    if (submitState !== "success" && submitState !== "error") {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setSubmitState("idle");
+      setSubmitMessage("");
+    }, 4200);
+
+    return () => window.clearTimeout(timer);
+  }, [submitState, submitMessage]);
+
+  const dismissToast = () => {
+    setSubmitState("idle");
+    setSubmitMessage("");
+  };
 
   const handleSendMessage = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -349,18 +450,18 @@ export default function ContactSection() {
             {submitState === "submitting" ? "SENDING..." : "SEND MESSAGE"}
           </motion.button>
 
-          {submitMessage ? (
-            <motion.p
-              variants={itemVariants}
-              className={`text-sm md:col-span-2 ${
-                submitState === "success" ? "text-[#5C2E83]" : "text-[#b44f2d]"
-              }`}
-            >
-              {submitMessage}
-            </motion.p>
-          ) : null}
         </motion.form>
       </div>
+
+      <AnimatePresence>
+        {submitMessage && (submitState === "success" || submitState === "error") ? (
+          <FormStatusToast
+            state={submitState}
+            message={submitMessage}
+            onDismiss={dismissToast}
+          />
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 }
