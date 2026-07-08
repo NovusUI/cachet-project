@@ -16,7 +16,7 @@ const contactItems: ContactItem[] = [
   },
   {
     label: "PHONE",
-    value: "07045413648 · 09039968345",
+    value: "07045413648 · 09036968345",
     icon: "phone",
   },
   {
@@ -166,7 +166,13 @@ function FormStatusToast({
         }`}
       >
         {isSuccess ? (
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
             <path
               d="M2.3 6.1L4.7 8.5L9.7 3.5"
               stroke="currentColor"
@@ -176,7 +182,13 @@ function FormStatusToast({
             />
           </svg>
         ) : (
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
             <path
               d="M6 3V6.25"
               stroke="currentColor"
@@ -199,7 +211,13 @@ function FormStatusToast({
         aria-label="Dismiss notification"
         className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-current/70 transition-colors duration-200 hover:bg-black/5 hover:text-current"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
           <path
             d="M7 7L17 17"
             stroke="currentColor"
@@ -225,9 +243,9 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [selectedService, setSelectedService] = useState("");
   const [message, setMessage] = useState("");
-  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle"
-  );
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
   useEffect(() => {
@@ -253,7 +271,9 @@ export default function ContactSection() {
 
     if (!firstName || !phone || !email || !selectedService || !message) {
       setSubmitState("error");
-      setSubmitMessage("Please complete the required fields before sending your message.");
+      setSubmitMessage(
+        "Please complete the required fields before sending your message."
+      );
       return;
     }
 
@@ -274,7 +294,9 @@ export default function ContactSection() {
       });
 
       setSubmitState("success");
-      setSubmitMessage("Thanks for reaching out. We'll get back to you shortly.");
+      setSubmitMessage(
+        "Thanks for reaching out. We'll get back to you shortly."
+      );
       setFirstName("");
       setLastName("");
       setPhone("");
@@ -313,8 +335,8 @@ export default function ContactSection() {
           </h2>
 
           <p className="mt-6 max-w-xl text-[1.12rem] leading-8 text-[#8a8e92] italic sm:text-[1.28rem] sm:leading-9">
-            Whether buying, selling, investing, or building, we're ready to
-            help you achieve your real estate goals.
+            Whether buying, selling, investing, or building, we're ready to help
+            you achieve your real estate goals.
           </p>
 
           <motion.div
@@ -403,8 +425,12 @@ export default function ContactSection() {
                   Property and Facility Management
                 </option>
                 <option value="Project Management">Project Management</option>
-                <option value="Property Development">Property Development</option>
-                <option value="Building Construction">Building Construction</option>
+                <option value="Property Development">
+                  Property Development
+                </option>
+                <option value="Building Construction">
+                  Building Construction
+                </option>
               </select>
               <svg
                 className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2"
@@ -449,12 +475,12 @@ export default function ContactSection() {
           >
             {submitState === "submitting" ? "SENDING..." : "SEND MESSAGE"}
           </motion.button>
-
         </motion.form>
       </div>
 
       <AnimatePresence>
-        {submitMessage && (submitState === "success" || submitState === "error") ? (
+        {submitMessage &&
+        (submitState === "success" || submitState === "error") ? (
           <FormStatusToast
             state={submitState}
             message={submitMessage}
